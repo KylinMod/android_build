@@ -29,7 +29,6 @@ PRODUCT_PACKAGES := \
     Email \
     Exchange2 \
     Gallery2 \
-    LatinIME \
     Launcher2 \
     Music \
     Provision \
