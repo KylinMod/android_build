@@ -32,6 +32,7 @@ PRODUCT_PACKAGES := \
     Gallery2 \
     InputDevices \
     Keyguard \
+    LatinIME \
     Launcher2 \
     Music \
     OneTimeInitializer \
