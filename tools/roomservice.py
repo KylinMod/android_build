@@ -194,6 +194,15 @@ def add_to_manifest(repositories, fallback_branch = None):
             else:
                 project.set('name',repository['repository'])
 
+        if 'remote' in repository:
+            project.set('remote',repository['remote'])
+            if repository['remote'] == 'th' and not 'github' in repository['repository']:
+                project.set('name','github/TheMuppets/'+repository['repository'])
+            elif repository['remote'] == 'local' and not 'github' in repository['repository']:
+                project.set('name','github/'+repository['repository'])
+            else:
+                project.set('name',repository['repository'])
+
         lm.append(project)
 
     indent(lm, 0)

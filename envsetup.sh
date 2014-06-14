@@ -22,6 +22,7 @@ Invoke ". build/envsetup.sh" from your shell to add the following functions to y
 - aospremote: Add git remote for matching AOSP repository.
 - cafremote: Add git remote for matching CodeAurora repository.
 - cmremote: Add git remote for matching CyanogenMod repository.
+- thremote: Add git remote for matching TheMuppets repository.
 - mka:      Builds using SCHED_BATCH on all processors.
 - mkap:     Builds the module(s) using mka and pushes them to the device.
 - kmka:     Cleans and builds using mka.
@@ -1538,6 +1539,19 @@ function cmremote()
     PROJECT=`cat .git/config | grep "projectname" | rev | cut -d'/' -f1 | rev`
     git remote add cm https://github.com/CyanogenMod/${PROJECT}.git
     echo "Remote 'cm' created"
+}
+export -f cmremote
+
+function thremote()
+{
+    git remote rm th 2> /dev/null
+    if [ ! -d .git ]
+    then
+        echo .git directory not found. Please run this from the root directory of the Android repository you wish to set up.
+    fi
+    PROJECT=`cat .git/config | grep "projectname" | rev | cut -d'/' -f1 | rev`
+    git remote add th https://github.com/TheMuppets/${PROJECT}.git
+    echo "Remote 'th' created"
 }
 export -f cmremote
 
