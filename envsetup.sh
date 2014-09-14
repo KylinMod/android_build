@@ -508,6 +508,7 @@ function brunch()
 function breakfast()
 {
     target=$1
+    local variant=$2
     KM_DEVICES_ONLY="true"
     unset LUNCH_MENU_CHOICES
     add_lunch_combo full-eng
@@ -528,7 +529,10 @@ function breakfast()
             lunch $target
         else
             # This is probably just the KM model name
-            lunch km_$target-userdebug
+            if [ -z "$variant" ]; then
+                variant="userdebug"
+            fi
+            lunch km_$target-$variant
         fi
     fi
     return $?
